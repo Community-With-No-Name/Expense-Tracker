@@ -1,4 +1,4 @@
-const API = process.env.NODE_ENV==="production" ? "https://cwnn-et.herokuapp.com/api" : "http://localhost:8000/api"
+const API = process.env.NODE_ENV==="production" ? "https://cwnn-api.herokuapp.com/api" : "http://localhost:8000/api"
 
 const AUTH = `${API}/auth/`
 const TRANSACTIONS = `${API}/transactions/`
