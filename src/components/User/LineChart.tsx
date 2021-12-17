@@ -1,53 +1,68 @@
 import React from "react"
 import {Doughnut,Line,Bar} from 'react-chartjs-2';
 
-export default function PieChart({debt, credit}) {
-  const [chart, setChart] = React.useState({
-    labels: [
-      `Debit: #${debt}`,
-      `Credit: #${credit}`,
-    ],
-    datasets: [{
-      data: [debt, credit],
-      backgroundColor: [
-      '#dc2626',
-      '#059669',
-      ],
-      hoverBackgroundColor: [
-      '#bb1d1d',
-      '#076548',
-      ]
-    }]
+export default function LineChart({debit, credit}) {
+  const [labels, setLabels] = React.useState(['January', 'February', 'March', 'April', 'May', 'June', 'July', "August", 'September', 'October', 'November', 'December']);
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: true,
+        text: 'Monthly Transaction Chart',
+      },
+    },
+  };
+  const [data, setChart] = React.useState({
+    labels,
+  datasets: [
+    {
+      label: 'Debit',
+      data: debit,
+      borderColor: '#dc2626',
+      backgroundColor: '#bb1d1d',
+      // fill: true,
+    },
+    {
+      label: 'Credit',
+      data: credit,
+      borderColor: '#059669',
+      backgroundColor: '#076548',
+      // fill: true,
+    },
+  ],
   })
   React.useEffect(()=> {
     setChart({
-      labels: [
-        `Debit: #${debt}`,
-        `Credit: #${credit}`,
-      ],
-      datasets: [{
-        data: [debt, credit],
-        backgroundColor: [
-        '#dc2626',
-        '#059669',
-        ],
-        hoverBackgroundColor: [
-        '#bb1d1d',
-        '#076548',
-        ]
-      }]
+      labels,
+  datasets: [
+    {
+      label: 'Debit',
+      data: debit,
+      borderColor: '#dc2626',
+      backgroundColor: '#bb1d1d',
+      // fill: true,
+    },
+    {
+      label: 'Credit',
+      data: credit,
+      borderColor: '#059669',
+      backgroundColor: '#076548',
+      // fill: true,
+    },
+  ],
     })
-  },[debt, credit])
+  },[debit, credit, labels])
   return (
     <>
-    <div
-      className="relative w-auto h-auto p-5 px-4 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6"
-    >
+    <div className="w-auto h-auto col-span-1 p-5 px-4 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6">
     <>
       <h2 className="text-xl font-medium leading-6 text-gray-900">Transaction Stats</h2>
-      <Doughnut
+      <Line
         // className="w-auto h-auto"
-        data={chart}
+        data={data}
         width={200}
         height={200}
       />

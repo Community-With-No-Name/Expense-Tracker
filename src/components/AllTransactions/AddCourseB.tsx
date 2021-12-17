@@ -99,7 +99,7 @@ export default function FormDialog({
                           <label htmlFor={field.name} className="pb-3">
                             {field.label}
                           </label>
-                          <input name={field.name} onChange={handleChange} type={field.type} placeholder={field.placeholder} id={field.name} className="relative block w-full px-3 py-2 mb-1 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-green-500 focus:z-10 sm:text-sm" />
+                          <input required name={field.name} onChange={handleChange} type={field.type} placeholder={field.placeholder} id={field.name} className="relative block w-full px-3 py-2 mb-1 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-green-500 focus:z-10 sm:text-sm" />
                         </div>
                           ))
                           }
@@ -107,7 +107,7 @@ export default function FormDialog({
                           <label htmlFor="" className="pb-3">
                             Transaction Type
                           </label>
-                          <select name="transaction_type" onChange={handleSelect} id="transaction_type" className="relative block w-full px-3 py-2 mb-1 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-green-500 focus:z-10 sm:text-sm">
+                          <select required name="transaction_type" onChange={handleSelect} id="transaction_type" className="relative block w-full px-3 py-2 mb-1 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-green-500 focus:z-10 sm:text-sm">
                               <option value="">Please Select Transaction Type</option>
                               <option value="debit" className="text-red-700">Debit</option>
                               <option value="credit" className="text-green-700">Credit</option>
@@ -115,7 +115,7 @@ export default function FormDialog({
                         </div>
                         <div className="w-full px-3 my-2">
                           <label htmlFor="" className="pb-3">
-                            Transaction Type
+                            Transaction details
                           </label>
                           <TextareaAutosize minRows={3} name="transaction_detail" onChange={handleChange} id="transaction_detail" className="relative block w-full px-3 py-2 mb-1 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-green-500 focus:z-10 sm:text-sm"/>
                         </div>

@@ -20,6 +20,7 @@ import {
 } from "@heroicons/react/outline";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@material-ui/core";
+import jwtDecode from "jwt-decode";
 const navigation = [
   { name: "Dashboard", href: "/user", icon: HomeIcon },
   { name: "All Transactions", href: "/transactions", icon: FolderOpenIcon },
@@ -39,6 +40,7 @@ export default function Layout({ children, page }) {
     alert("log out successful");
     window.location.href = "/login";
   };
+  const user:{fullName: any, image: any, email: any} = jwtDecode(localStorage?.getItem("ET_token"))
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100">
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -97,6 +99,19 @@ export default function Layout({ children, page }) {
                     alt="Workflow"
                   />
                 </div>
+                <div className="p-6 bg-transparent">
+        <div className="">
+          <div className="">
+            <div className="flex-shrink-0">
+              <img className="object-contain object-center w-40 h-40 mx-auto transition-all transform rounded-full hover:scale-110 hover:-translate-y-3" src={user?.image} alt="" />
+            </div>
+            <div className="mt-4 text-center ">
+              <p className="text-xl font-bold text-white ">{user?.fullName}</p>
+              <p className="text-sm font-medium text-white">{user?.email}</p>
+            </div>
+          </div>
+        </div>
+      </div>
                 <nav className="px-2 mt-5 space-y-1 overflow-hidden">
                   {navigation.map((item) => (
                     <Link
@@ -106,7 +121,7 @@ export default function Layout({ children, page }) {
                         item.name === page
                           ? "bg-white text-green-900"
                           : "text-gray-300 hover:bg-green-700 hover:text-white",
-                        "group flex items-center px-2 py-2 text-base font-medium -mr-6 rounded-full"
+                        "group flex items-center px-2 py-2 text-base font-medium  hover:scale-105 hover:translate-x-5 transition-all transform -mr-6 rounded-full"
                       )}
                     >
                       <item.icon
@@ -126,7 +141,7 @@ export default function Layout({ children, page }) {
                     onClick={logOut}
                     className={classNames(
                       "text-gray-300 hover:bg-green-700 hover:text-white",
-                      "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                      "group flex items-center px-2 py-2 text-sm font-medium  hover:scale-105 hover:translate-x-5 transition-all transform rounded-md"
                     )}
                   >
                     <LogoutIcon
@@ -178,6 +193,19 @@ export default function Layout({ children, page }) {
                   alt="Workflow"
                 />
               </div>
+              <div className="p-6 bg-transparent">
+        <div className="">
+          <div className="">
+            <div className="flex-shrink-0">
+              <img className="object-contain object-center w-40 h-40 mx-auto transition-all transform rounded-full hover:scale-110 hover:-translate-y-3" src={user?.image} alt="" />
+            </div>
+            <div className="mt-4 text-center ">
+              <p className="text-xl font-bold text-white ">{user?.fullName}</p>
+              <p className="text-sm font-medium text-white">{user?.email}</p>
+            </div>
+          </div>
+        </div>
+      </div>
               <nav className="flex-1 px-2 mt-5 space-y-1 overflow-hidden bg-green-700">
                 {navigation.map((item) => (
                   <Link
@@ -187,7 +215,7 @@ export default function Layout({ children, page }) {
                       item.name === page
                         ? "bg-white text-green-900"
                         : "text-gray-300 hover:bg-white hover:text-green-900",
-                      "group flex items-center px-2 -mr-6 rounded-full py-2 text-sm font-medium rounded-md overflow-hidden"
+                      "group flex items-center px-2 -mr-6 rounded-full py-2 text-sm font-medium rounded-md overflow-hidden  hover:scale-105 hover:translate-x-5 transition-all transform "
                     )}
                   >
                     <item.icon
@@ -207,7 +235,7 @@ export default function Layout({ children, page }) {
                   onClick={logOut}
                   className={classNames(
                     "text-gray-300 hover:bg-green-700 hover:text-white",
-                    "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                    "group flex items-center px-2 py-2 text-sm font-medium  hover:scale-105 hover:translate-x-5 transition-all transform rounded-md"
                   )}
                 >
                   <LogoutIcon

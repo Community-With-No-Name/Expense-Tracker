@@ -9,6 +9,7 @@ import Register from "pages/Register";
 import Transactions from "pages/Transactions";
 import Credit from "pages/Credit";
 import Debit from "pages/Debit";
+import "./App.css"
 
 export const ToastContext = React.createContext<any>(null)
 function App() {

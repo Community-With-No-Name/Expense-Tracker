@@ -68,7 +68,7 @@ export default function Transactions() {
     },
     onError(data) {
       setDisabled(false);
-      alert("Course reg Failed")
+      alert("Transaction Failed")
     }
     
   });

@@ -6,6 +6,7 @@ import { queryKeys } from "api/queryKey";
 import { REGISTER } from '../api/apiUrl';
 import img from "../images/login.svg"
 import { FacultyAndDepartments } from 'utils/FacultyAndDepartments';
+import axios from "axios"
 export default function Register(props) {
   const [state, setState] = React.useState({
     email: "",
@@ -15,7 +16,9 @@ export default function Register(props) {
     faculty: "",
     department: "",
     image:"",
-    imageFile: ""
+    imageFile: "",
+    loading: false,
+    files: null
   })
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -42,26 +45,49 @@ export default function Register(props) {
     }
     
   });
-  const submitForm = (e: any) => {
+  const submitForm = async(e: any) => {
     e.preventDefault();
-    
-    state.password!==state.password2 && alert("passwords do not match")
-    state.password===state.password2 && mutate({
-      url: REGISTER,
-      data: {
-        email: state.email,
-        password: state.password,
-        image: state.image.toString(),
-        fullName: state.fullName,
-      },
-    });
-    setDisabled(true)
+    const files = state.files
+    const data = new FormData()
+    data.append('file', files)
+    data.append('upload_preset', 'jewbreel')
+    setState({loading:true, ...state})
+    // const res = await fetch('https://api.cloudinary.com/v1_1/jewbreel1/image/upload',
+    // {
+    //   method:'POST',
+    //   body:data
+    // }
+    // )
+    await axios.post('https://api.cloudinary.com/v1_1/jewbreel1/image/upload',data)
+      .then(res=>{
+        console.log(res)
+        // setState({...state, image:res.data.secure_url, loading:false})
+        const image = res.data.secure_url
+        // const file = await res.json()
+        // console.log(file, file.secure_url)
+        //     setState({...state, image:file.secure_url, loading:false})
+        // this.setState({logo:file.secure_url})
+        // this.setState({logoLoading:false})
+        // console.log(file.secure_url)
+        
+        state.password!==state.password2 && alert("passwords do not match")
+        state.password===state.password2 && mutate({
+          url: REGISTER,
+          data: {
+              email: state.email,
+              password: state.password,
+              image,
+              fullName: state.fullName,
+            },
+          });
+          setDisabled(true)
+        })
   };
   const handleImage = (e: any) => {
     setState({
       ...state,
       imageFile: URL.createObjectURL(e.target.files[0]),
-      image: e.target.files[0],
+      files: e.target.files[0],
     });
   };
   return (

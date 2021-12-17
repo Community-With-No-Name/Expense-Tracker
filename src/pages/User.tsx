@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from 'react'
 import Layout from 'components/Layout'
 import Header from 'components/User/Header'
@@ -37,13 +38,39 @@ export default function User() {
   }
   const debitList = transactions?.filter(transaction => transaction.transaction_type==="debit")
   const creditList = transactions?.filter(transaction => transaction.transaction_type==="credit")
+  const januaryDebit = SumData(transactions?.filter(transaction => transaction.month=='1')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const februaryDebit = SumData(transactions?.filter(transaction => transaction.month=='2')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const marchDebit = SumData(transactions?.filter(transaction => transaction.month=='3')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const aprilDebit = SumData(transactions?.filter(transaction => transaction.month=='4')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const mayDebit = SumData(transactions?.filter(transaction => transaction.month=='5')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const juneDebit = SumData(transactions?.filter(transaction => transaction.month=='6')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const julyDebit = SumData(transactions?.filter(transaction => transaction.month=='7')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const augustDebit = SumData(transactions?.filter(transaction => transaction.month=='8')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const septemberDebit = SumData(transactions?.filter(transaction => transaction.month=='9')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const octoberDebit = SumData(transactions?.filter(transaction => transaction.month=='10')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const novemberDebit = SumData(transactions?.filter(transaction => transaction.month=='11')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const decemberDebit = SumData(transactions?.filter(transaction => transaction.month=='12')?.filter(transaction=>transaction.transaction_type==="debit")?.map(list=>list.transaction_amount))
+  const januaryCredit = SumData(transactions?.filter(transaction => transaction.month=='1')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const februaryCredit = SumData(transactions?.filter(transaction => transaction.month=='2')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const marchCredit = SumData(transactions?.filter(transaction => transaction.month=='3')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const aprilCredit = SumData(transactions?.filter(transaction => transaction.month=='4')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const mayCredit = SumData(transactions?.filter(transaction => transaction.month=='5')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const juneCredit = SumData(transactions?.filter(transaction => transaction.month=='6')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const julyCredit = SumData(transactions?.filter(transaction => transaction.month=='7')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const augustCredit = SumData(transactions?.filter(transaction => transaction.month=='8')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const septemberCredit = SumData(transactions?.filter(transaction => transaction.month=='9')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const octoberCredit = SumData(transactions?.filter(transaction => transaction.month=='10')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const novemberCredit = SumData(transactions?.filter(transaction => transaction.month=='11')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
+  const decemberCredit = SumData(transactions?.filter(transaction => transaction.month=='12')?.filter(transaction=>transaction.transaction_type==="credit")?.map(list=>list.transaction_amount))
   const debit = SumData(debitList?.map(list=>list.transaction_amount))
   const credit = SumData(creditList?.map(list=>list.transaction_amount))
   const total = Number(credit) - Number(debit)
   const statsData = {
     total,
     debit,
-    credit
+    credit,
+    monthCredit: [januaryCredit, februaryCredit, marchCredit, aprilCredit, mayCredit, juneCredit, julyCredit, augustCredit, septemberCredit, octoberCredit, novemberCredit, decemberCredit],
+    monthDebit: [januaryDebit, februaryDebit, marchDebit, aprilDebit, mayDebit, juneDebit, julyDebit, augustDebit, septemberDebit, octoberDebit, novemberDebit, decemberDebit]
   }
   const userCourses = []
     return (

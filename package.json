@@ -2,6 +2,7 @@
   "name": "cra-sms",
   "version": "0.1.0",
   "private": true,
+  "main": "electron/main.ts",
   "dependencies": {
     "@headlessui/react": "^1.3.0",
     "@heroicons/react": "^1.0.2",
@@ -16,6 +17,7 @@
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
     "chart.js": "^3.4.1",
+    "electron-is": "^3.0.0",
     "framer-motion": "^4.1.17",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
@@ -34,10 +36,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fix": "eslint . --fix"
+    "fix": "eslint . --fix",
+    "electron:start": "concurrently \"yarn start\" \"wait-on http://localhost:3001 && electron .\"",
+    "build": "PUBLIC_URL=/ react-scripts build",
+    "build-electron": "react-scripts build",
+    "electron:build": "yarn build-electron && electron-builder build --publish never"
   },
   "eslintConfig": {
     "extends": [
@@ -62,7 +67,11 @@
     "@types/react-helmet": "^6.1.2",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
+    "concurrently": "^6.5.0",
+    "electron": "^16.0.5",
+    "electron-builder": "^22.14.5",
     "eslint": "*",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "wait-on": "^6.0.0"
   }
 }

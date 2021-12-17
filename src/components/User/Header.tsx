@@ -13,7 +13,7 @@ export default function Header({user}) {
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="sm:flex sm:space-x-5">
             <div className="flex-shrink-0">
-              <img className="object-cover object-center w-40 h-40 mx-auto transition-all transform rounded-full hover:scale-110 hover:-translate-y-3" src={image} alt="" />
+              <img className="object-contain object-center w-40 h-40 mx-auto transition-all transform hover:scale-110 hover:-translate-y-3" src={user.image} alt="" />
             </div>
             <div className="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
               <p className="text-sm font-medium text-gray-600">Welcome back,</p>
