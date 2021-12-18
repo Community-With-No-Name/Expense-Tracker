@@ -10,6 +10,8 @@ import Transactions from "pages/Transactions";
 import Credit from "pages/Credit";
 import Debit from "pages/Debit";
 import "./App.css"
+import { createBrowserHistory, createHashHistory } from 'history';
+import { isElectron } from "utils/isElectron";
 
 export const ToastContext = React.createContext<any>(null)
 function App() {
@@ -31,6 +33,9 @@ const AdminRoutes = ({location}) => (
               <Route exact path="/user" component={User} />
             </Switch>
 )
+const history = isElectron()
+  ? createHashHistory()
+  : createBrowserHistory();
   return (
     <>
           <ToastContext.Provider value={showAlert}>

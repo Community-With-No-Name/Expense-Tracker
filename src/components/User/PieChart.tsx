@@ -53,7 +53,7 @@ export default function PieChart({debt, credit}) {
   return (
     <>
     <div
-      className="w-auto h-auto max-w-xl col-span-1 p-5 px-4 overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6"
+      className="w-full h-auto max-w-xl col-span-1 p-5 px-4 mx-auto overflow-hidden bg-white rounded-lg shadow sm:pt-6 sm:px-6"
     >
     <>
       <h2 className="text-xl font-medium leading-6 text-gray-900">Transaction Stats</h2>

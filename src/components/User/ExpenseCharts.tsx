@@ -12,7 +12,7 @@ export default function ExpenseCharts({data}) {
       <BarChart debit={data.monthDebit} credit={data.monthCredit} />
       <LineChart debit={data.monthDebit} credit={data.monthCredit} />
     </div>
-    <div className="flex justify-center w-full py-5">
+    <div className="grid w-full grid-cols-1 py-5 mx-auto">
       <PieChart debt={data.debit} credit={data.credit} />
     </div>
         </>

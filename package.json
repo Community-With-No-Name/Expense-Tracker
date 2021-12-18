@@ -1,5 +1,19 @@
 {
   "name": "cra-sms",
+  "homepage": "./",
+  "build": {
+    "appId": "com.app.id",
+    "productName": "React Electron App",
+    "files": [
+      "build/**/*",
+      "electron/main.ts",
+      "package.json"
+    ],
+    "extends": null,
+    "mac": {
+      "type": "distribution"
+    }
+  },
   "version": "0.1.0",
   "private": true,
   "main": "electron/main.ts",
@@ -42,7 +56,8 @@
     "electron:start": "concurrently \"yarn start\" \"wait-on http://localhost:3001 && electron .\"",
     "build": "PUBLIC_URL=/ react-scripts build",
     "build-electron": "react-scripts build",
-    "electron:build": "yarn build-electron && electron-builder build --publish never"
+    "electron:build": "yarn build-electron && electron-builder build --publish never",
+    "electron:build:all": "yarn build-electron && electron-builder build --publish never -mwl"
   },
   "eslintConfig": {
     "extends": [
