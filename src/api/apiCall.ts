@@ -18,6 +18,8 @@ export const deleteRequest = async ({ url } : {url: string}) => {
 export const login = async ({ url, data }: { url: string, data: {} | string }) => {
   const response = await axios.post(url, data)
   if(!response.data.error){
+    console.log(response)
+    console.log(response.data)
     localStorage.setItem('ET_token', response.data)
   }
   if(response.data.error){
