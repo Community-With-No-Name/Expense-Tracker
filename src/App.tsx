@@ -9,7 +9,7 @@ import Register from "pages/Register";
 import Transactions from "pages/Transactions";
 import Credit from "pages/Credit";
 import Debit from "pages/Debit";
-import "./App.css"
+// import "./App.css"
 import { createBrowserHistory, createHashHistory } from 'history';
 import { isElectron } from "utils/isElectron";
 
@@ -17,13 +17,13 @@ export const ToastContext = React.createContext<any>(null)
 function App() {
 const { showAlert, Toast } = useToast();
 const UserRoutes = ({location}) => (
-  <Switch location={location} key={location.pathname}>
+  <Switch location={location} key={location.key}>
               <Route exact path="/" component={Landing} />
               <Route exact path="/login" component={Login} />
             </Switch>
 )
 const AdminRoutes = ({location}) => (
-  <Switch location={location} key={location.pathname}>
+  <Switch location={location} key={location.key}>
               <Route exact path="/" component={Landing} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
@@ -39,21 +39,28 @@ const history = isElectron()
   return (
     <>
           <ToastContext.Provider value={showAlert}>
-      <AnimateSharedLayout>
+      {/* <AnimateSharedLayout> */}
+        <Toast />
         <BrowserRouter>
         <Route
         render={({location}) => (
           <AnimatePresence exitBeforeEnter>
-          <Toast />
-            {/* {
-              localStorage?.ET_token && localStorage?.ET_token!==undefined ? <AdminRoutes location={location} /> : <UserRoutes location={location} />
-            } */}
-            <AdminRoutes location={location} />
+  <Switch location={location} key={location.key}>
+              <Route exact path="/" component={Landing} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/transactions" component={Transactions} />
+              <Route exact path="/credit-transactions" component={Credit} />
+              <Route exact path="/debit-transactions" component={Debit} />
+              <Route exact path="/user" component={User} />
+              <Route exact path="*" />
+              </Switch>
+            {/* <AdminRoutes location={location} /> */}
           </AnimatePresence>
         )}
          />
         </BrowserRouter>
-      </AnimateSharedLayout>
+      {/* </AnimateSharedLayout> */}
           </ToastContext.Provider>
     </>
   );

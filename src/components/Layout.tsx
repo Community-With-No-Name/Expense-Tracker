@@ -21,6 +21,7 @@ import {
 import { Link } from "react-router-dom";
 import { Tooltip } from "@material-ui/core";
 import jwtDecode from "jwt-decode";
+import { motion } from "framer-motion";
 const navigation = [
   { name: "Dashboard", href: "/user", icon: HomeIcon },
   { name: "All Transactions", href: "/transactions", icon: FolderOpenIcon },
@@ -193,7 +194,7 @@ export default function Layout({ children, page }) {
                   alt="Workflow"
                 />
               </div>
-              <div className="p-6 bg-transparent">
+              <div className="py-6 bg-transparent">
         <div className="">
           <div className="">
             <div className="flex-shrink-0">
@@ -286,9 +287,9 @@ export default function Layout({ children, page }) {
             {/* <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
               <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
             </div> */}
-            <div className="px-4 mx-auto max-w-9xl sm:px-6 md:px-8">
+            <motion.div initial={{y: 5000}} transition={{duration: 1}} animate={{y: 0}} exit={{y: -5000, transition: {ease: "easeInOut", duration: 1}}} className="px-4 mx-auto max-w-9xl sm:px-6 md:px-8">
               {children}
-            </div>
+            </motion.div>
           </div>
         </main>
       </div>

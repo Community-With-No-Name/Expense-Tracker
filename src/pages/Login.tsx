@@ -5,6 +5,8 @@ import { ToastContext } from "../App"
 import { queryKeys } from "api/queryKey";
 import { LOGIN } from '../api/apiUrl';
 import img from "../images/login.svg"
+import { motion } from 'framer-motion';
+import Navbar from 'components/Landing/Navbar';
 export default function Login(props) {
   const [state, setState] = React.useState({
     email: "",
@@ -46,7 +48,8 @@ export default function Login(props) {
   console.log(process.env.NODE_ENV)
   return (
     <>
-      <div className="grid max-w-6xl max-h-screen grid-cols-1 gap-10 mx-auto sm:grid-cols-2">
+    <Navbar />
+      <motion.div initial={{x: 5000}} transition={{duration: 1}} animate={{x: 0}} exit={{x: -5000, transition: {ease: "easeInOut", duration: 1}}} className="grid max-w-6xl max-h-screen grid-cols-1 gap-10 mx-auto sm:grid-cols-2">
       <div className="hidden col-span-1 sm:my-auto sm:mx-auto sm:block" data-aos="fade-in-up" data-aos-duration="800">
         <img 
         src={img}
@@ -119,7 +122,7 @@ export default function Login(props) {
         </div>
       </div>
     </div>
-    </div>
+    </motion.div>
     </>
   )
 }

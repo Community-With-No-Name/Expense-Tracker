@@ -5,8 +5,10 @@ import { ToastContext } from "../App"
 import { queryKeys } from "api/queryKey";
 import { REGISTER } from '../api/apiUrl';
 import img from "../images/login.svg"
+import { motion } from 'framer-motion';
 import { FacultyAndDepartments } from 'utils/FacultyAndDepartments';
 import axios from "axios"
+import Navbar from 'components/Landing/Navbar';
 export default function Register(props) {
   const [state, setState] = React.useState({
     email: "",
@@ -91,7 +93,9 @@ export default function Register(props) {
     });
   };
   return (
-    <form onSubmit={submitForm}>
+    <>
+    <Navbar />
+    <motion.form initial={{x: 5000}} transition={{duration: 1}} animate={{x: 0}} exit={{x: -5000, transition: {ease: "easeInOut", duration: 1}}} onSubmit={submitForm}>
       <div className="grid max-w-6xl max-h-screen grid-cols-1 gap-10 mx-auto sm:grid-cols-2">
       <div className="hidden col-span-1 sm:my-auto sm:mx-auto sm:block" data-aos="fade-in-up" data-aos-duration="800">
       <img 
@@ -108,7 +112,7 @@ export default function Register(props) {
           // src="https://res.cloudinary.com/jewbreel1/image/upload/v1625737196/jewbreel/sms/otp_mqfisv.svg"
             alt="Workflow"
             data-aos="fade-in-up" data-aos-duration="800"
-        />
+            />
         <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">Sign Up</h2>
       </div>
 
@@ -125,7 +129,7 @@ export default function Register(props) {
                       src={state.imageFile}
                       className="object-cover object-center space-y-1"
                     />
-                  ) : (
+                    ) : (
                     <div className="space-y-1 text-center">
                       <svg
                         className="w-12 h-12 mx-auto text-gray-400"
@@ -133,13 +137,13 @@ export default function Register(props) {
                         fill="none"
                         viewBox="0 0 48 48"
                         aria-hidden="true"
-                      >
+                        >
                         <path
                           d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
                           strokeWidth={2}
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                        />
+                          />
                       </svg>
                       <div className="flex text-sm text-gray-600">
                         <div className="relative font-medium bg-white rounded-md cursor-pointer text-rose-600 hover:text-rose-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-rose-500">
@@ -150,7 +154,7 @@ export default function Register(props) {
                             name="image"
                             type="file"
                             className="sr-only"
-                          />
+                            />
                         </div>
                       </div>
                     </div>
@@ -167,11 +171,11 @@ export default function Register(props) {
                   id="fullName"
                   name="fullName"
                   type="text"
-                    autoComplete="fullName"
-                    placeholder="Enter Full Name"
+                  autoComplete="fullName"
+                  placeholder="Enter Full Name"
                   required
                   className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                />
+                  />
               </div>
             </div>
             <div>
@@ -218,11 +222,11 @@ export default function Register(props) {
                   id="password2"
                   name="password2"
                   type="password"
-                    autoComplete="password2"
+                  autoComplete="password2"
                     placeholder="***********"
                   required
                   className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
-                />
+                  />
               </div>
             </div>
 
@@ -232,7 +236,7 @@ export default function Register(props) {
                 type="submit"
                 disabled={disabled}
                 className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white transition-all transform bg-green-600 border border-transparent rounded-md shadow-sm hover:scale-105 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              >
+                >
                 Login
               </button>
             </div>
@@ -242,6 +246,7 @@ export default function Register(props) {
       </div>
     </div>
     </div>
-    </form>
+    </motion.form>
+                </>
   )
 }

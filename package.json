@@ -3,16 +3,17 @@
   "homepage": "./",
   "build": {
     "appId": "com.app.id",
-    "productName": "React Electron App",
+    "productName": "Expense Tracker",
+    "linux":{
+        "category": "utility",
+        "target": ["deb"]
+    },
     "files": [
       "build/**/*",
       "electron/main.ts",
       "package.json"
     ],
-    "extends": null,
-    "mac": {
-      "type": "distribution"
-    }
+    "extends": null
   },
   "version": "0.1.0",
   "private": true,
@@ -53,11 +54,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "fix": "eslint . --fix",
-    "electron:start": "concurrently \"yarn start\" \"wait-on http://localhost:3001 && electron .\"",
+    "electron:start": "concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "build": "PUBLIC_URL=/ react-scripts build",
     "build-electron": "react-scripts build",
-    "electron:build": "yarn build-electron && electron-builder build --publish never",
-    "electron:build:all": "yarn build-electron && electron-builder build --publish never -mwl"
+    "electron": "electron .",
+    "electron:build": "yarn build-electron && electron-builder build --publish never --win",
+    "electron:build:all": "yarn build-electron && electron-builder build --publish never --linux deb"
   },
   "eslintConfig": {
     "extends": [

@@ -10,3 +10,9 @@ public/style.css
 public/fonts
 ./public/fonts
 /public/fonts
+./src/App.css
+src/App.css
+./src/style.css
+src/style.css
+dist
+./dist

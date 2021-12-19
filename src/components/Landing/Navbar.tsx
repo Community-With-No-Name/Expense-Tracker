@@ -15,12 +15,8 @@ import {Link} from "react-router-dom"
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 const navigations = [
-  {name: "Home", url: "/"},
-  {name: "About Us", url: "/about-us"},
-  {name: "Partners", url: "/partners"},
-  {name: "IT Services", url: "/IT-services"},
-  {name: "Security Services", url: "/security-services"},
-  {name: "Contact Us", url: "/contact-us"},
+  {name: "Login", url: "/login"},
+  {name: "Register", url: "/register"},
 ]
 
 function classNames(...classes) {
@@ -29,25 +25,25 @@ function classNames(...classes) {
 
 export default function Navbar() {
   return (
-    <Popover className="relative inset-0 bg-black">
+    <Popover className="relative inset-0 text-black">
       {({ open }) => (
         <>
           <div className="flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <a href="#">
-                <span className="sr-only">CWNN</span>
+                <span className="sr-only">MET</span>
                 {/* <img
                   className="w-full h-16 sm:h-16"
                   src="/img/logo.png"
                   alt=""
                 /> */}
                 <Link to="/">
-                <h1 className="text-2xl font-extrabold cursor-pointer">CWNN</h1>
+                <h1 className="text-2xl font-extrabold text-black cursor-pointer">MET</h1>
                 </Link>
               </a>
             </div>
             <div className="-my-2 -mr-2 md:hidden">
-              <Popover.Button className="inline-flex items-center justify-center p-2 text-white bg-green-900 rounded-md hover:text-gray-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
+              <Popover.Button className="inline-flex items-center justify-center p-2 text-black bg-green-900 rounded-md hover:text-gray-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon className="w-6 h-6" aria-hidden="true" />
               </Popover.Button>
@@ -56,7 +52,7 @@ export default function Navbar() {
               {
                 navigations.map((nav, index)=>(
                   <Link key={index} to={nav.url}>
-              <div className="text-base font-medium text-white cursor-pointer hover:text-gray-900">
+              <div className="text-base font-medium text-black cursor-pointer hover:text-gray-900">
                 {nav.name}
               </div>
                   </Link>
@@ -90,11 +86,11 @@ export default function Navbar() {
                         alt="Workflow"
                       /> */}
                       <Link to="/">
-                <h1 className="text-2xl font-extrabold cursor-pointer">CWNN</h1>
+                <h1 className="text-2xl font-extrabold text-black cursor-pointer">MET</h1>
                       </Link>
                     </div>
                     <div className="-mr-2">
-                      <Popover.Button className="inline-flex items-center justify-center p-2 text-white bg-green-900 rounded-md hover:text-gray-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
+                      <Popover.Button className="inline-flex items-center justify-center p-2 text-black bg-green-900 rounded-md hover:text-gray-500 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
                         <span className="sr-only">Close menu</span>
                         <XIcon className="w-6 h-6" aria-hidden="true" />
                       </Popover.Button>
@@ -106,7 +102,7 @@ export default function Navbar() {
                     {
                       navigations.map((nav, index)=>(
                     <Link to={nav.url} key={index}>
-                      <div className="text-base font-medium text-white cursor-pointer hover:text-gray-700 sspro">
+                      <div className="text-base font-medium text-black cursor-pointer hover:text-gray-700 sspro">
                       {nav.name}
                       </div>
                     </Link>

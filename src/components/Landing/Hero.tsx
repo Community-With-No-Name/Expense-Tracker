@@ -1,83 +1,34 @@
 import React from 'react'
-import image from "../../images/login.svg"
+import image from "../../images/system.svg"
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { ChevronRightIcon } from '@heroicons/react/solid'
+import { Link } from 'react-router-dom'
 
 export default function Hero() {
     return (
         <>
-        <div className="pt-10 mb-16 bg-black sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
-            <div className="mx-auto max-w-7xl lg:px-8">
-              <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-                <div className="max-w-md px-4 mx-auto sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
-                  <div className="lg:py-24">
-                    <a
-                      href="#"
-                      className="inline-flex items-center p-1 pr-2 text-white bg-black rounded-full sm:text-base lg:text-sm xl:text-base hover:text-gray-200"
-                    >
-                      <span className="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-green-500 rounded-full">
-                        Interested In Us
-                      </span>
-                      <span className="ml-4 text-sm">Get Our Registration Link</span>
-                      <ChevronRightIcon className="w-5 h-5 ml-2 text-gray-500" aria-hidden="true" />
-                    </a>
-                    <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                      <span className="block">Community </span>
-                      <span className="block text-green-400">With No Name</span>
-                    </h1>
-                    {/* <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                      Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit
-                      sunt amet fugiat veniam occaecat fugiat.
-                    </p> */}
-                    <div className="mt-10 sm:mt-12">
-                      <form action="#" className="sm:max-w-xl sm:mx-auto lg:mx-0">
-                        <div className="sm:flex">
-                          <div className="flex-1 min-w-0">
-                            <label htmlFor="email" className="sr-only">
-                              Email address
-                            </label>
-                            <input
-                              id="email"
-                              type="email"
-                              placeholder="Enter your email"
-                              className="block w-full px-4 py-3 text-base text-gray-900 placeholder-gray-500 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-300 focus:ring-offset-gray-900"
-                            />
-                          </div>
-                          <div className="mt-3 sm:mt-0 sm:ml-3">
-                            <button
-                              type="submit"
-                              className="block w-full px-4 py-3 font-medium text-white bg-green-500 rounded-md shadow hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-300 focus:ring-offset-gray-900"
-                            >
-                              Request Invite
-                            </button>
-                          </div>
-                        </div>
-                        {/* <p className="mt-3 text-sm text-gray-300 sm:mt-4">
-                          Start your free 14-day trial, no credit card necessary. By providing your email, you agree to
-                          our{' '}
-                          <a href="#" className="font-medium text-white">
-                            terms or service
-                          </a>
-                          .
-                        </p> */}
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
-                  <div className="max-w-md px-4 mx-auto my-16 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-                    {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
-                    <img
-                      className="w-full transition-all transform lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none hover:scale-110 hover:-translate-y-5"
-                      src={image}
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="py-12 bg-gray-100 md:py-24">
+  <div className="grid max-w-screen-xl px-6 mx-auto lg:px-8 xl:px-4 md:grid-cols-4 xl:grid-cols-5 gap-x-12 lg:gap-x-20">
+    <div className="self-center order-2 col-span-2 mt-12 md:order-1 md:mt-0">
+      <h1 className="mb-2 text-3xl font-bold text-gray-800 md:text-4xl lg:text-5xl md:mb-4 lg:mb-8">My Expense Tracker</h1>
+      <p className="mb-6 text-lg text-gray-600 xl:text-xl lg:mb-8 xl:mb-10">Track your daily and monthly expenses from location in the world on your mobile phone or PC.</p>
+      <div className="flex mb-6 space-x-4">
+        <Link to="/login">
+        <button className="inline-block px-5 py-2 font-semibold text-green-700 border border-green-700 rounded-lg hover:text-green-50 focus:outline-none bg-gradient-to-br from-green-50 to-green-100 hover:from-green-500 hover:to-green-700 ">Sign in</button>
+        </Link>
+        <Link to="/register">
+        <button className="inline-block px-5 py-2 font-semibold rounded-lg text-green-50 hover:text-green-700 focus:outline-none bg-gradient-to-br from-green-600 to-green-700 hover:from-green-50 hover:to-green-100 ">Get started</button>
+        </Link>
+      </div>
+      {/* <p className="text-sm text-gray-500">No credit card required. Cancel anytime.</p> */}
+    </div>
+    <div className="order-1 col-span-2 md:order-2 xl:col-span-3">
+      <img src={image} className="rounded-lg shadow-2xl" alt="" />
+    </div>
+  </div>
+</div>
+
 
            {/* <section className="flex flex-col items-center justify-center text-5xl font-extrabold md:flex-row h-5/6">
                 <div className="pb-5">
